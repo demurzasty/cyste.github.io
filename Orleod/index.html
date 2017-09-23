@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <canvas id="surface" width="800" height="600" style="background: cornflowerblue;"></canvas>
+        <script src="content.js"></script>
+        <script src="sprite.js"></script>
+        <script src="map.js"></script>
+        <script src="npc.js"></script>
+        <script src="player.js"></script>
+        <script src="item.js"></script>
+        <script src="interface.js"></script>
+        <script src="input.js"></script>
+    </head>
+    <body>
+        <script>
+        var canvas = document.getElementById('surface');
+        var context = canvas.getContext('2d');
+        
+        var lastFrameTime = 17;
+        
+        function GameLoop()
+        {
+            var t = (new Date()).getTime();
+            
+            if (IsContentLoaded())
+            {
+                player.Update(1.0 / 60.0);
+                
+                for (var i = 0; i < npcs.length; i++)
+                    npcs[i].Update(1.0 / 60.0);
+                
+                map.RenderMask(context);
+                
+                for (var y = 0; y < MIN_MAP_HEIGHT; y++)
+                {
+                    player.Render(context, y);
+                    
+                    for (var i = 0; i < npcs.length; i++)
+                        npcs[i].Render(context, y);
+                }
+                
+                map.RenderFringe(context);
+                
+                for (var i = 0; i < widgets.length; i++)
+                    widgets[i].Render(context);
+            }
+            else
+            {
+                canvas.width = canvas.width;
+                
+                context.font = '12px Verdana';
+                context.textAlign = 'center';
+                context.fillText(Math.floor(content_counter / CONTENT_SIZE * 100) + '%', canvas.width / 2,canvas.height / 2);
+            }
+            
+            setTimeout(GameLoop, 17 - lastFrameTime);
+            
+            lastFrameTime = (new Date()).getTime() - t;
+        }
+        
+        window.onload = function() 
+        {
+            LoadContent();
+            
+            map.LoadDefault();
+            
+            InitNPC();
+            
+            window.addEventListener('keydown', KeyDown, false);
+            window.addEventListener('keyup', KeyUp, false);
+            canvas.addEventListener('mousemove', MouseMove, false);
+            canvas.addEventListener('mousedown', MouseDown, false);
+            canvas.addEventListener('mouseup', MouseUp, false);
+            
+            var date = new Date();
+            fpsTime = date.getTime();
+            
+            GameLoop();
+        
+            // window.location = location.href + '?upd=' + (new Date()).getMilliseconds();
+        };
+        </script>
+    </body>
+</html>

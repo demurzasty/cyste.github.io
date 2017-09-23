@@ -1,0 +1,15 @@
+html, body 
+{
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+
+#surface 
+{
+	position: absolute;
+    margin: 0;
+    padding: 0;
+    left: calc(50% - 400px);
+    border: 1px solid white;
+}

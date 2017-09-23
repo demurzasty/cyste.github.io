@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Space</title>
+        <style>
+            html, body {
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+
+            }
+
+            canvas {
+                display: inline-block;
+            }
+        </style>
+        <script id="shader-vs" type="x-shader/x-vertex">
+            attribute vec2 position;
+
+            uniform vec2 invCanvasSize;
+
+            void main(void) {
+            gl_PointSize = 0.0;
+                gl_Position.xy = (position * invCanvasSize) * 2.0 - 1.0;
+                gl_Position.y = - gl_Position.y;
+                //gl_Position.xy = (position);
+                gl_Position.zw = vec2(0.0, 1.0);
+              // gl_Position = position;
+            }
+        </script>
+        <script id="shader-fs" type="x-shader/x-fragment">
+        void main(void) {
+            gl_FragColor = vec4(1.0, 1.0, 1.0, 0.1);
+        }</script>
+        <script src="libs/fpsmeter.min.js"></script>
+        <script src="scripts/renderer.js"></script>
+        <script src="scripts/particle.js"></script>
+        <script src="scripts/field.js"></script>
+        <script src="scripts/emitter.js"></script>
+        <script src="scripts/sector.js"></script>
+        <script src="scripts/particleSystem.js"></script>
+        <script src="scripts/game.js"></script>
+    </head>
+    <body onload="game.start()">
+        <canvas id="surface"></canvas>
+    </body>
+</html>

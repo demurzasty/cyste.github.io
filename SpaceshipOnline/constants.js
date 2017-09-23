@@ -1,0 +1,57 @@
+var FPS  = 60;
+var IP   = '185.25.148.74';
+var PORT = 7001;
+
+var MAX_IMAGE_BACKGROUNDS = 1;
+var MAX_IMAGE_SHIPS       = 2;
+var MAX_IMAGE_FIRES       = 2;
+var MAX_IMAGE_BULLETS     = 1;
+var MAX_IMAGE_INTERFACES  = 1;
+var MAX_IMAGE_MINERALS    = 4;
+var MAX_IMAGE_EFFECTS     = 2;
+var MAX_IMAGES            = MAX_IMAGE_BACKGROUNDS + MAX_IMAGE_SHIPS + MAX_IMAGE_FIRES + MAX_IMAGE_BULLETS + MAX_IMAGE_INTERFACES + MAX_IMAGE_MINERALS + MAX_IMAGE_EFFECTS;
+
+var MAX_CONTENT = MAX_IMAGES;
+
+var STATE_MENU     = 0;
+var STATE_PLAY     = 1;
+var STATE_REGISTER = 2;
+
+var BUTTON_DEFAULT  = 0;
+var BUTTON_HOVER    = 1;
+var BUTTON_ACTIVE   = 2;
+var BUTTON_DISABLED = 3;
+
+var MOUSE_BUTTON_LEFT   = 0;
+var MOUSE_BUTTON_MIDDLE = 1;
+var MOUSE_BUTTON_RIGHT  = 2;
+
+var TEXTBOX_MARGIN_LEFT = 10;
+
+var KEY_ENTER = 13;
+var KEY_SHIFT = 16;
+var KEY_CTRL  = 17;
+var KEY_ALT   = 18;
+var KEY_LEFT  = 37;
+var KEY_UP    = 38;
+var KEY_RIGHT = 39;
+var KEY_DOWN  = 40;
+
+var DEFAULT_SPEED = 300;
+
+var CHAT_MAX_MESSAGES = 15;
+
+var MINERAL_COPPERIUM  = 0;
+var MINERAL_SILVERIUM  = 1;
+var MINERAL_GOLDINIUM  = 2;
+var MINERAL_MITHRILIUM = 3;
+
+var GUEST = true;
+
+var MINETAL_NAMES =
+[
+	'Copperium',
+	'Silverium',
+	'Goldinium',
+	'Mithrilium'
+];
